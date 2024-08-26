@@ -1,0 +1,19 @@
+[versions]
+html = "0.11.0"
+markdown = "0.7.3"
+ktor = "3.0.0-beta-2"
+
+[libraries]
+# TODO convert implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:${kotlinx_html_version}")
+kotlinx-html = { module = "org.jetbrains.kotlinx:kotlinx-html-jvm", version.ref = "html" }
+# org.jetbrains:markdown
+markdown = { module = "org.jetbrains:markdown", version.ref = "markdown" }
+
+ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
+ktor-server-cors = { module = "io.ktor:ktor-server-cors", version.ref = "ktor" }
+ktor-server-html-builder = { module = "io.ktor:ktor-server-html-builder", version.ref = "ktor" }
+ktor-server-config-yaml = { module = "io.ktor:ktor-server-config-yaml", version.ref = "ktor" }
+
+[plugins]
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
