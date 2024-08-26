@@ -21,7 +21,7 @@ inline fun HTML.defaultTemplate(
             """
                 prose prose-zinc dark:prose-invert max-w-none
                 prose-a:text-purple-300 prose-a:no-underline hover:prose-a:text-purple-200
-                prose-h2:mt-8 prose-h3:mt-6 prose-h4:mt-4
+                prose-h2:mt-8 prose-h2:mb-1 prose-h3:mt-6 prose-h3:mb-1 prose-h4:mt-4 prose-h4:mb-1
             """.trimIndent()
         ) {
 
