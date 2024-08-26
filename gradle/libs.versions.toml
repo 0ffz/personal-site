@@ -2,10 +2,12 @@
 html = "0.11.0"
 markdown = "0.7.3"
 ktor = "3.0.0-beta-2"
+kotlin = "2.0.20"
+kotlinxSerialization = "1.7.0"
 
 [libraries]
-# TODO convert implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:${kotlinx_html_version}")
 kotlinx-html = { module = "org.jetbrains.kotlinx:kotlinx-html-jvm", version.ref = "html" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 # org.jetbrains:markdown
 markdown = { module = "org.jetbrains:markdown", version.ref = "markdown" }
 
@@ -17,3 +19,4 @@ ktor-server-config-yaml = { module = "io.ktor:ktor-server-config-yaml", version.
 
 [plugins]
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

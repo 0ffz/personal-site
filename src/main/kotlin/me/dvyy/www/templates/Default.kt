@@ -2,31 +2,30 @@ package me.dvyy.www.templates
 
 import kotlinx.html.*
 import me.dvyy.www.components.linkWheel
-import me.dvyy.www.markdown
 
 inline fun HTML.defaultTemplate(
     pageName: String,
+    title: String = pageName,
     smallPage: Boolean = false,
     showFooter: Boolean = true,
     crossinline init: FlowContent.() -> Unit,
 ) {
     head {
-        script(src = "https://cdn.tailwindcss.com") {}
+//        script(src = "https://cdn.tailwindcss.com") {}
+        link(rel = "stylesheet", href = "/static/tailwind/styles.css")
     }
     body(classes = "bg-zinc-900 min-h-screen") {
         div(
-            """max-w-none
-            [&_a]:text-purple-300 [&_a]:no-underline hover:[&_a]:text-purple-200
-            [&_h2]:mt-8 [&_h3]:mt-6 [&_h4]:mt-4
-            # Set spacing
-            [&_p]:mt-3 [&_p]:mb-3
-            [&_hr]:border-zinc-700
+            """
+                prose prose-zinc dark:prose-invert max-w-none
+                prose-a:text-purple-300 prose-a:no-underline hover:prose-a:text-purple-200
+                prose-h2:mt-8 prose-h3:mt-6 prose-h4:mt-4
             """.trimIndent()
         ) {
 
             div("items-center h-auto px-4 pt-4 md:pt-8 md:px-8 lg:pt-20 xl:pt-36 text-slate-200 mx-auto max-w-screen-lg") {
                 div(if (smallPage) "max-w-xl" else "max-w-screen-lg") {
-                    h1("text-3xl mb-2") { +pageName }
+                    h1("mb-2") { +title }
                     linkWheel(pageName)
                     hr("my-5")
                     init()

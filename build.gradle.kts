@@ -1,6 +1,7 @@
 plugins {
     application
     alias(libs.plugins.ktor)
+    alias(libs.plugins.kotlinx.serialization)
     kotlin("jvm") version "2.0.20"
 }
 
@@ -19,11 +20,30 @@ dependencies {
     implementation(libs.ktor.server.netty)
     implementation(libs.ktor.server.html.builder)
     implementation(libs.ktor.server.config.yaml)
+    implementation(libs.kotlinx.serialization.json)
     implementation("ch.qos.logback:logback-classic:1.5.6")
 }
 
-tasks.test {
-    useJUnitPlatform()
+tasks{
+    test {
+        useJUnitPlatform()
+    }
+
+    register("tailwind") {
+        exec {
+            commandLine("npx", "tailwindcss", "-o", "src/main/resources/assets/tailwind/styles.css", "--minify")
+        }
+    }
+
+    assemble {
+        dependsOn("tailwind")
+    }
+
+    register<JavaExec>("generate") {
+        dependsOn(assemble)
+        classpath = sourceSets["main"].runtimeClasspath
+        mainClass.set("me.dvyy.www.generation.StaticGeneratorKt")
+    }
 }
 kotlin {
     jvmToolchain(17)
