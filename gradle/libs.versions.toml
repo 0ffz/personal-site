@@ -4,11 +4,12 @@ markdown = "0.7.3"
 ktor = "3.0.0-beta-2"
 kotlin = "2.0.20"
 kotlinxSerialization = "1.7.0"
+kotlinxDatetime = "0.6.0"
 
 [libraries]
 kotlinx-html = { module = "org.jetbrains.kotlinx:kotlinx-html-jvm", version.ref = "html" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
-# org.jetbrains:markdown
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 markdown = { module = "org.jetbrains:markdown", version.ref = "markdown" }
 
 ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }

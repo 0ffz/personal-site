@@ -8,10 +8,11 @@ inline fun HTML.defaultTemplate(
     title: String = pageName,
     smallPage: Boolean = false,
     showFooter: Boolean = true,
+    desc: String? = null,
     crossinline init: FlowContent.() -> Unit,
 ) {
     head {
-        meta(charset ="utf-8")
+        meta(charset = "utf-8")
         meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
         link(rel = "stylesheet", href = "/static/tailwind/styles.css")
         title(title)
@@ -21,7 +22,7 @@ inline fun HTML.defaultTemplate(
             """
                 prose prose-zinc dark:prose-invert max-w-none
                 prose-a:text-purple-300 prose-a:no-underline hover:prose-a:text-purple-200
-                prose-h2:mt-8 prose-h2:mb-1 prose-h3:mt-6 prose-h3:mb-1 prose-h4:mt-4 prose-h4:mb-1
+                prose-h2:mt-8 prose-h2:mb-2 prose-h3:mt-6 prose-h3:mb-2 prose-h4:mt-4 prose-h4:mb-1
             """.trimIndent()
         ) {
 
@@ -29,6 +30,9 @@ inline fun HTML.defaultTemplate(
                 div(if (smallPage) "max-w-xl" else "max-w-screen-lg") {
                     h1("mb-2") { +title }
                     linkWheel(pageName)
+                    if (desc != null) div("pt-2") {
+                        p("text-zinc-400 m-0") { i { +desc } }
+                    }
                     hr("my-5")
                     init()
                     if (showFooter) {

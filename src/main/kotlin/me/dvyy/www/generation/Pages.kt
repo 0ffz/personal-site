@@ -9,6 +9,7 @@ data class PageReference<T>(
     val frontMatterSerializer: KSerializer<T>,
     val url: String,
     val path: Path,
+    val fileName: String,
 ) {
     fun read(): Page<T> {
         return Page.fromFile(frontMatterSerializer, path)
@@ -16,14 +17,16 @@ data class PageReference<T>(
 }
 
 object Pages {
+    @OptIn(ExperimentalPathApi::class)
     inline fun <reified T> forPath(path: Path): List<PageReference<T>> {
         if (!path.exists()) return emptyList()
         val serializer = serializer<T>()
         return path
-            .listDirectoryEntries()
+            .walk()
             .filter { it.isRegularFile() }
             .map {
-                PageReference(serializer, it.relativeTo(path).toString().removeSuffix(".md"), it)
+                PageReference(serializer, it.relativeTo(path).toString().removeSuffix(".md"), it, it.nameWithoutExtension)
             }
+            .toList()
     }
 }

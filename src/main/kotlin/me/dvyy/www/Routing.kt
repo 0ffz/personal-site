@@ -18,8 +18,8 @@ val routing = siteRoot {
         "index" shows HTML::blogIndex
         Pages.forPath<BlogPost>(Path("pages/blog")).forEach { ref ->
             ref.url shows {
-                val post = ref.read()
-                it.blogPost(post.frontMatter, post.content)
+                val page = ref.read()
+                it.blogPost(page)
             }
         }
     }

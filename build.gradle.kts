@@ -21,6 +21,7 @@ dependencies {
     implementation(libs.ktor.server.html.builder)
     implementation(libs.ktor.server.config.yaml)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.datetime)
     implementation("ch.qos.logback:logback-classic:1.5.6")
 }
 
