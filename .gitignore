@@ -3,6 +3,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+node_modules
 
 ### IntelliJ IDEA ###
 .idea
@@ -37,3 +38,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Generated
+src/main/resources/assets/tailwind/styles.css
