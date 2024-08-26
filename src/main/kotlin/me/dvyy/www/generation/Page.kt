@@ -19,7 +19,7 @@ data class Page<T>(
         inline fun <reified T> fromFile(path: Path, default: T? = null): Page<T> =
             fromFile(serializer<T>(), path, default)
 
-        fun <T> fromFile(serializer: KSerializer<T>, path: Path, default: T?): Page<T> {
+        fun <T> fromFile(serializer: KSerializer<T>, path: Path, default: T? = null): Page<T> {
             path.useLines {
                 var frontMatter = ""
                 val content = it.fold(StringBuilder()) { acc, line ->

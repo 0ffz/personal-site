@@ -2,6 +2,7 @@ package me.dvyy.www.pages.blog
 
 import kotlinx.html.*
 import me.dvyy.www.generation.Page
+import me.dvyy.www.generation.Pages
 import me.dvyy.www.templates.defaultTemplate
 import kotlin.io.path.Path
 import kotlin.io.path.isRegularFile
@@ -10,13 +11,8 @@ import kotlin.io.path.relativeTo
 
 fun HTML.blogIndex() = defaultTemplate("Blog", smallPage = false) {
     val blogRoot = Path("pages/blog")
-    val posts = blogRoot
-        .listDirectoryEntries()
-        .filter { it.isRegularFile() }
-        .map { path ->
-            val readPage = Page.fromFile<BlogPost>(path)
-            readPage.frontMatter.copy(url = path.relativeTo(Path("pages")).toString().removeSuffix(".md"))
-        }
+    val posts = Pages.forPath<BlogPost>(blogRoot).map { it.read().frontMatter.copy(url = "blog/${it.url}") }
+
     posts.groupBy { it.year }.forEach { (year, posts) ->
         h2 { +(year ?: "No year") }
         ul {
