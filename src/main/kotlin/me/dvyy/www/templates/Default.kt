@@ -15,6 +15,7 @@ inline fun HTML.defaultTemplate(
         meta(charset = "utf-8")
         meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
         link(rel = "stylesheet", href = "/static/tailwind/styles.css")
+        link(rel = "stylesheet", href = "/static/custom.css")
         title(title)
     }
     body(classes = "bg-zinc-900 min-h-screen") {
@@ -33,7 +34,7 @@ inline fun HTML.defaultTemplate(
                     if (desc != null) div("pt-2") {
                         p("text-zinc-400 m-0") { i { +desc } }
                     }
-                    hr("my-5")
+                    hr("my-4")
                     init()
                     if (showFooter) {
                         div("md:h-36")
