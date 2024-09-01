@@ -9,6 +9,8 @@ import me.dvyy.www.generation.routesToServer
 
 internal val logger = KtorSimpleLogger("me.dvyy.Website")
 
+fun startServer(args: Array<String>) = main(args)
+
 fun main(args: Array<String>) {
     io.ktor.server.netty.EngineMain.main(args)
 }

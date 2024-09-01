@@ -1,6 +1,4 @@
 plugins {
-    application
-    alias(libs.plugins.ktor)
     alias(libs.plugins.kotlinx.serialization)
     kotlin("jvm") version "2.0.20"
 }
@@ -50,6 +48,6 @@ kotlin {
     jvmToolchain(17)
 }
 
-application {
-    mainClass.set("io.ktor.server.netty.EngineMain")
-}
+//application {
+//    mainClass.set("io.ktor.server.netty.EngineMain")
+//}
