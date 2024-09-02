@@ -30,7 +30,7 @@ tasks{
 
     register("tailwind") {
         exec {
-            commandLine("npx", "tailwindcss", "-o", "src/main/resources/assets/tailwind/styles.css", "--minify")
+            commandLine("npx", "tailwindcss", "-o", "assets/tailwind/styles.css", "--minify")
         }
     }
 

@@ -14,8 +14,8 @@ inline fun HTML.defaultTemplate(
     head {
         meta(charset = "utf-8")
         meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
-        link(rel = "stylesheet", href = "/static/tailwind/styles.css")
-        link(rel = "stylesheet", href = "/static/custom.css")
+        link(rel = "stylesheet", href = "/assets/tailwind/styles.css")
+        link(rel = "stylesheet", href = "/assets/custom.css")
         title(title)
     }
     body(classes = "bg-zinc-900 min-h-screen") {
@@ -24,6 +24,7 @@ inline fun HTML.defaultTemplate(
                 prose prose-zinc dark:prose-invert max-w-none
                 prose-a:text-purple-300 prose-a:no-underline hover:prose-a:text-purple-200
                 prose-h2:mt-8 prose-h2:mb-2 prose-h3:mt-6 prose-h3:mb-2 prose-h4:mt-4 prose-h4:mb-1
+                prose-img:mx-auto md:prose-img:px-8
             """.trimIndent()
         ) {
 

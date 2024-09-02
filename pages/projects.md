@@ -11,6 +11,12 @@ I do server infrastructure work across several projects that help us deploy and 
 - [Keepup](https://github.com/MineInAbyss/Keepup) is a CLI tool I wrote to download server dependencies via [rclone](https://rclone.org/) as defined in a HOCON file. This format lets us define and reuse dependencies for many servers in one file.
 - [Custom Docker images](https://github.com/MineInAbyss/Docker) that help tie all our tools into one package that's useful for production and local development.
 
+## [Weekly task planner](https://github.com/0ffz/tasks)
+
+A cross-platform task and week planning app written on Jetpack Compose. It uses sqlite for storage, with near-instant startup times on Android, alongside a quick-add feature.
+
+![Desktop app](/assets/images/tasks-desktop.png)
+
 ## Game jams
 
 I've worked in Unity and Godot with C# to create games for game jams. My latest entry was [Rock Bottom](https://github.com/0ffz/Ludum-Dare-46) in Ludum Dare 46. I worked in a team of three to create a physics puzzle game using an event driven architecture.
@@ -21,4 +27,4 @@ I've worked on a few projects involving more frontend work:
 
 - [Clicky](https://github.com/0ffz/Clicky), an online vote room I made for a professor that wanted students to be able to answer impromptu questions in class. It's built on Django and the frontend is mostly pure HTML with skeleton CSS applied.
 - [Sports venue manager](https://github.com/0ffz/CSCB07-final) was a school project that introduced me to Firebase and modern Android app architecture. I used a lot of newer Java-specific Android standards, rather than Kotlin, which ironically I've used for anything but Android.
-- [*This* website](https://dvyy.me) is built with [Eleventy](https://www.11ty.dev/), primarily using their [WebC](https://www.11ty.dev/docs/languages/webc/) templating language to split things into reusable components without any client side JavaScript required.
+- [*This* website](https://dvyy.me) is built using a mini static site generator I wrote in Kotlin. I can split things into reusable components without any client side JavaScript required. Learn more on its [project page](https://github.com/0ffz/personal-site).

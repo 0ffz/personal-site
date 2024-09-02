@@ -4,6 +4,7 @@ ktor:
     modules:
       - me.dvyy.www.ApplicationKt.module
   deployment:
+    host: "localhost"
     port: "8080"
     watch:
       - classes
