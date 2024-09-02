@@ -5,6 +5,7 @@ fun main() {
     StaticGenerator(
         output = Path("out"),
         routing = routing,
-        extraInputs = listOf(Path("site/assets"))
+        extraInputs = listOf(Path("site/assets")),
+        devMode = System.getenv("DEVELOPMENT") == "true"
     ).generate()
 }

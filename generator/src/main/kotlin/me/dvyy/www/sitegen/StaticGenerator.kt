@@ -5,30 +5,31 @@ import kotlinx.html.stream.appendHTML
 import java.nio.file.Path
 import kotlin.io.path.*
 import kotlin.time.measureTime
-import kotlin.time.measureTimedValue
 
 fun runCommand(vararg args: String) {
     ProcessBuilder(*args).apply {
         inheritIO()
     }.start().waitFor()
 }
+
 class StaticGenerator(
     val output: Path,
     val routing: SiteRoute,
     val extraInputs: List<Path>,
+    val devMode: Boolean,
 ) {
     @OptIn(ExperimentalPathApi::class)
     fun generate() {
         measureTime {
-            output.deleteRecursively()
+            if (!devMode) output.deleteRecursively()
             output.createDirectories()
         }.let { println("Cleared output in: $it") }
+        runCommand("npx", "tailwindcss", "-o", "out/assets/tailwind/styles.css", "--minify")
         measureTime {
             extraInputs
-                .forEach { it.copyToRecursively(output / it.name, followLinks = false) }
+                .forEach { it.copyToRecursively(output / it.name, followLinks = false, overwrite = true) }
         }.let { println("Copied extra inputs in: $it") }
         measureTime { generate(output, routing) }.let { println("Generated html files in: $it") }
-        runCommand("npx", "tailwindcss", "-o", "out/assets/tailwind/styles.css", "--minify")
     }
 
     fun generate(root: Path, route: SiteRoute): Unit = when (route) {
@@ -39,7 +40,7 @@ class StaticGenerator(
 
         is SiteRoute.Document -> {
             val path = root / "${route.name}.html"
-            path.createParentDirectories().createFile().writeText(buildString {
+            path.createParentDirectories().also { if (it.notExists()) it.createFile() }.writeText(buildString {
                 appendHTML().html {
                     route.html(this)
                 }

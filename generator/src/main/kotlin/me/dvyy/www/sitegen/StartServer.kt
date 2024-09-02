@@ -17,7 +17,6 @@ fun startServer(
         Netty,
         port = 8080,
         host = "localhost",
-//        watchPaths = listOf("classes", "resources")
     ) {
         routing {
             staticFiles("/", File("out")) {
@@ -37,6 +36,7 @@ suspend fun startServerAndWatch(): Unit = coroutineScope {
     launch {
         ProcessBuilder("./gradlew", "-t", "generate").apply {
             environment()["JAVA_HOME"] = System.getProperty("java.home")
+            environment()["DEVELOPMENT"] = "true"
             redirectInput(ProcessBuilder.Redirect.INHERIT)
             redirectOutput(ProcessBuilder.Redirect.INHERIT)
             redirectError(ProcessBuilder.Redirect.INHERIT)

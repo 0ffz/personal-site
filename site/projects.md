@@ -11,21 +11,21 @@ A community-driven recreation of Made in Abyss in Minecraft. I did game developm
 - [Keepup](https://github.com/MineInAbyss/Keepup) is a CLI tool I wrote to download server dependencies via [rclone](https://rclone.org/) as defined in a HOCON file. This format lets us define and reuse dependencies for many servers in one file.
 - [Custom Docker images](https://github.com/MineInAbyss/Docker) that help tie all our tools into one package that's useful for production and local development.
 
-<img alt="Desktop app" class="full-bleed min-h-72 object-cover" src="/assets/images/orth.png"/>
+<img alt="The golden bridge in Orth overlooks the Abyss" loading="lazy" class="full-bleed min-h-72 object-cover" src="/assets/images/orth.png"/>
 <figcaption>The golden bridge in Orth overlooks the Abyss</figcaption>
 
 ## [Weekly task planner](https://github.com/0ffz/tasks)
 
 A cross-platform task and week planning app written on Jetpack Compose. It uses sqlite for storage, with near-instant startup times on Android, alongside a quick-add feature.
 
-<img alt="Desktop app" src="/assets/images/tasks-desktop.png"/>
+<img alt="The application home screen on Desktop" loading="lazy"  src="/assets/images/tasks-desktop.png"/>
 <figcaption>The application home screen on Desktop</figcaption>
 
 ## Game jams
 
 I've worked in Unity and Godot with C# to create games for game jams. My latest entry was [Rock Bottom](https://github.com/0ffz/Ludum-Dare-46) in Ludum Dare 46. I worked in a team of three to create a physics puzzle game using an event driven architecture.
 
-<img alt="Desktop app" loading="lazy" src="/assets/images/rock_bottom.avif"/>
+<img alt="Pet rocks in the pet rock shop return home" loading="lazy" src="/assets/images/rock_bottom.avif"/>
 <figcaption>Pet rocks in the pet rock shop return home</figcaption>
 
 ## Frontend roundup
