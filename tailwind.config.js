@@ -2,7 +2,8 @@
 module.exports = {
     content: {
         files: [
-            './src/main/kotlin/**/*.kt',
+            './src/**/*.kt',
+            './site/**/*.md',
         ]
     },
     fontFamily: {

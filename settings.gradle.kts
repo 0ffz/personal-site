@@ -3,3 +3,4 @@ plugins {
 }
 rootProject.name = "personal-site-kotlin"
 
+include("generator")
