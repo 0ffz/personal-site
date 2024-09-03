@@ -1,26 +1,35 @@
 package templates.blog
 
-import kotlinx.html.HTML
+import components.outlinedChip
+import components.secondaryText
+import icons
 import kotlinx.html.div
 import kotlinx.serialization.Serializable
-import components.outlinedChip
-import me.dvyy.www.sitegen.Page
+import me.dvyy.www.sitegen.page.Page
 import me.dvyy.www.sitegen.markdown
 import templates.defaultTemplate
 
 @Serializable
 data class BlogPost(
     val year: String? = null,
-    val tags: List<String> = listOf(),
 )
 
-fun HTML.blogPost(page: Page<BlogPost>) = defaultTemplate(page.title, smallPage = false, desc = buildString {
-    append(page.dateAndDesc)
-}) {
-    div("flex overflow-x-auto space-x-1 items-center") {
-        for (tag in page.meta.tags) {
-            outlinedChip(tag)
+
+fun Page.blogPost() = defaultTemplate(syntaxHighlighting = true) {
+    div("my-2 flex overflow-x-auto space-x-1 items-center content-start scrollbar-hide") {
+        formattedDate?.let {
+            icons.calendar
+            secondaryText(it)
+        }
+        desc?.let {
+            div("pl-2") { icons.info }
+            secondaryText(it)
+        }
+
+        if (tags.isNotEmpty()) {
+            div("pl-2") { icons.tags }
+            for (tag in tags) outlinedChip(tag)
         }
     }
-    markdown(page.content)
+    markdown(content)
 }

@@ -1,24 +1,20 @@
-import kotlinx.html.HTML
-import me.dvyy.www.sitegen.Pages
-import me.dvyy.www.sitegen.siteRoot
-import templates.blog.BlogPost
+import me.dvyy.www.sitegen.page.CommonFrontMatter
+import me.dvyy.www.sitegen.siteRouting
 import templates.blog.blogIndex
 import templates.blog.blogPost
-import templates.home
-import templates.projects
+import templates.defaultTemplate
 import kotlin.io.path.Path
 
 
-val routing = siteRoot {
-    "index" shows HTML::home
-    "projects" shows HTML::projects
+val routing = siteRouting(
+    path = Path("site")
+) {
+    page("index.md") { defaultTemplate() }
+    page("projects.md") { defaultTemplate() }
+    documents
     "blog" {
-        "index" shows HTML::blogIndex
-        Pages.forPath<BlogPost>(Path("site/blog")).forEach { ref ->
-            ref.url shows {
-                val page = ref.read()
-                it.blogPost(page)
-            }
-        }
+        generate(meta = CommonFrontMatter(title = "Blog")) { blogIndex() }
+        includeAssets()
+        pages { blogPost() }
     }
 }

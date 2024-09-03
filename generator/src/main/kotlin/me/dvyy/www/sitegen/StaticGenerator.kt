@@ -1,50 +1,52 @@
 package me.dvyy.www.sitegen
 
+import kotlinx.html.dom.createHTMLDocument
+import kotlinx.html.dom.write
 import kotlinx.html.html
 import kotlinx.html.stream.appendHTML
 import java.nio.file.Path
 import kotlin.io.path.*
 import kotlin.time.measureTime
 
-fun runCommand(vararg args: String) {
+private fun runCommand(vararg args: String) {
     ProcessBuilder(*args).apply {
         inheritIO()
     }.start().waitFor()
 }
 
 class StaticGenerator(
-    val output: Path,
-    val routing: SiteRoute,
+    val dest: Path,
+    val root: SiteRouting,
     val extraInputs: List<Path>,
     val devMode: Boolean,
 ) {
     @OptIn(ExperimentalPathApi::class)
     fun generate() {
         measureTime {
-            if (!devMode) output.deleteRecursively()
-            output.createDirectories()
+            if (!devMode) dest.deleteRecursively()
+            dest.createDirectories()
         }.let { println("Cleared output in: $it") }
         runCommand("npx", "tailwindcss", "-o", "out/assets/tailwind/styles.css", "--minify")
         measureTime {
             extraInputs
-                .forEach { it.copyToRecursively(output / it.name, followLinks = false, overwrite = true) }
+                .forEach { it.copyToRecursively(dest / it.name, followLinks = false, overwrite = true) }
         }.let { println("Copied extra inputs in: $it") }
-        measureTime { generate(output, routing) }.let { println("Generated html files in: $it") }
+        measureTime { generateDocuments() }.let { println("Generated html files in: $it") }
     }
 
-    fun generate(root: Path, route: SiteRoute): Unit = when (route) {
-        is SiteRoute.Route -> {
-            val subroute = if (route.name == "/") root else root / route.name
-            route.subRoutes.forEach { generate(subroute, it) }
+    fun generateDocuments() {
+        root.assets.forEach {
+            val dest = dest / it.relativeTo(root.route)
+            dest.createParentDirectories()
+            it.copyTo(dest, overwrite = true)
         }
-
-        is SiteRoute.Document -> {
-            val path = root / "${route.name}.html"
-            path.createParentDirectories().also { if (it.notExists()) it.createFile() }.writeText(buildString {
-                appendHTML().html {
-                    route.html(this)
+        root.documents.forEach { document ->
+            val path = dest / document.path.relativeTo(root.route)
+            path.createParentDirectories().also { if (it.notExists()) it.createFile() }
+                .writer()
+                .use { writer ->
+                    document.page.html?.let { writer.write(it) }
                 }
-            })
         }
     }
 }

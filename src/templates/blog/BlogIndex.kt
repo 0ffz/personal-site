@@ -1,17 +1,17 @@
 package templates.blog
 
 import kotlinx.html.*
-import me.dvyy.www.sitegen.Pages
+import me.dvyy.www.sitegen.page.Pages
+import me.dvyy.www.sitegen.page.Page
 import templates.defaultTemplate
 import kotlin.io.path.Path
 
-fun HTML.blogIndex() = defaultTemplate("Blog", smallPage = false) {
-    val blogRoot = Path("templates/blogblog")
+fun Page.blogIndex() = defaultTemplate {
     val posts = Pages
-        .forPath<BlogPost>(blogRoot)
-        .map { it.read() }
+        .walk(Path("site/blog"), Path("site"))
+        .map { it.readFrontMatter() }
 
-    posts.groupBy { it.meta.year ?: "Unknown year" }
+    posts.groupBy { it.meta<BlogPost>().year ?: "Unknown year" }
         .toSortedMap { a, b -> b.compareTo(a) }
         .forEach { (year, posts) ->
             h2 { +year }
@@ -20,7 +20,7 @@ fun HTML.blogIndex() = defaultTemplate("Blog", smallPage = false) {
                     li {
                         div("flex space-x-2 items-center text-zinc-400") {
                             a(href = post.url) { +post.title }
-                            span { i { +post.dateAndDesc } }
+                            span { i { +(post.desc ?: "") } }
                         }
                     }
                 }

@@ -1,8 +1,12 @@
-## [Geary](https://github.com/MineInAbyss/Geary)
+---
+title: Projects
+---
+
+## Geary *([source](https://github.com/MineInAbyss/Geary))*
 
 An entity component system I wrote from the ground up in Kotlin. It lets users split data into small components and query entities based on the data they hold. It uses archetypes as the primary approach to speed up queries, and the design would allow for data to be packed tightly in memory once value objects are added to Java. It also has entity relations built into the engine, inspired by [flecs](https://github.com/SanderMertens/flecs).
 
-## Sysadmin work at [Mine in Abyss](https://mineinabyss.com/)
+## Sysadmin work at *[Mine in Abyss](https://mineinabyss.com/)*
 
 A community-driven recreation of Made in Abyss in Minecraft. I did game development and server infrastructure work across several projects that help us deploy and maintain servers as a small team:
 
@@ -11,12 +15,12 @@ A community-driven recreation of Made in Abyss in Minecraft. I did game developm
 - [Keepup](https://github.com/MineInAbyss/Keepup) is a CLI tool I wrote to download server dependencies via [rclone](https://rclone.org/) as defined in a HOCON file. This format lets us define and reuse dependencies for many servers in one file.
 - [Custom Docker images](https://github.com/MineInAbyss/Docker) that help tie all our tools into one package that's useful for production and local development.
 
-<img alt="The golden bridge in Orth overlooks the Abyss" loading="lazy" class="full-bleed min-h-72 object-cover" src="/assets/images/orth.png"/>
+<img alt="The golden bridge in Orth overlooks the Abyss" loading="lazy" class="full-bleed min-h-60 md:min-h-80 object-cover" src="/assets/images/orth.png"/>
 <figcaption>The golden bridge in Orth overlooks the Abyss</figcaption>
 
-## [Weekly task planner](https://github.com/0ffz/tasks)
+## Weekly task planner *([source](https://github.com/0ffz/tasks))*
 
-A cross-platform task and week planning app written on Jetpack Compose. It uses sqlite for storage, with near-instant startup times on Android, alongside a quick-add feature.
+A cross-platform task and week planning app written on Jetpack Compose, with a sync server. It uses sqlite for storage, with near-instant startup times on Android, alongside a quick-add feature.
 
 <img alt="The application home screen on Desktop" loading="lazy"  src="/assets/images/tasks-desktop.png"/>
 <figcaption>The application home screen on Desktop</figcaption>

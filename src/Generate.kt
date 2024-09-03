@@ -3,8 +3,8 @@ import kotlin.io.path.Path
 
 fun main() {
     StaticGenerator(
-        output = Path("out"),
-        routing = routing,
+        dest = Path("out"),
+        root = routing,
         extraInputs = listOf(Path("site/assets")),
         devMode = System.getenv("DEVELOPMENT") == "true"
     ).generate()

@@ -37,9 +37,12 @@ tasks{
 //    assemble {
 //        dependsOn("tailwind")
 //    }
+    build {
+        dependsOn(":generator:build")
+    }
 
     register<JavaExec>("generate") {
-        dependsOn(assemble)
+        dependsOn(build)
         classpath = sourceSets["main"].runtimeClasspath
         mainClass.set("GenerateKt")
     }
