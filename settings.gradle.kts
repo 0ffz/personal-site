@@ -1,6 +1,21 @@
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
-}
 rootProject.name = "personal-site-kotlin"
 
-include("generator")
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven("https://repo.mineinabyss.com/releases")
+        mavenLocal()
+    }
+}
+
+dependencyResolutionManagement {
+    val shockyVersion: String by settings
+
+    repositories {
+        maven("https://repo.mineinabyss.com/releases")
+        mavenLocal()
+    }
+    versionCatalogs {
+        create("shockyLibs").from("me.dvyy:catalog:$shockyVersion")
+    }
+}
