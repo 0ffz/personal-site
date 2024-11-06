@@ -1,8 +1,8 @@
 package templates.blog
 
 import kotlinx.html.*
-import me.dvyy.www.sitegen.page.Pages
-import me.dvyy.www.sitegen.page.Page
+import me.dvyy.shocky.page.Page
+import me.dvyy.shocky.page.Pages
 import templates.defaultTemplate
 import kotlin.io.path.Path
 

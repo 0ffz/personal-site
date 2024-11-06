@@ -3,8 +3,8 @@ package templates
 import kotlinx.html.*
 import components.linkWheel
 import kotlinx.serialization.Serializable
-import me.dvyy.www.sitegen.markdown
-import me.dvyy.www.sitegen.page.Page
+import me.dvyy.shocky.markdown
+import me.dvyy.shocky.page.Page
 
 @Serializable
 data class DefaultMeta(
@@ -14,9 +14,7 @@ data class DefaultMeta(
 
 inline fun Page.defaultTemplate(
     syntaxHighlighting: Boolean = false,
-    crossinline init: FlowContent.() -> Unit = {
-        markdown(content)
-    },
+    crossinline init: FlowContent.() -> Unit = { markdown(content) },
 ) = html {
     val meta = meta<DefaultMeta>()
     head {

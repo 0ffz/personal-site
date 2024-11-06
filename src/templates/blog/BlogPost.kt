@@ -5,8 +5,8 @@ import components.secondaryText
 import icons
 import kotlinx.html.div
 import kotlinx.serialization.Serializable
-import me.dvyy.www.sitegen.page.Page
-import me.dvyy.www.sitegen.markdown
+import me.dvyy.shocky.page.Page
+import me.dvyy.shocky.markdown
 import templates.defaultTemplate
 
 @Serializable
