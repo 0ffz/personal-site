@@ -1,5 +1,6 @@
 package templates.blog
 
+import components.outlinedChip
 import kotlinx.html.*
 import me.dvyy.shocky.page.Page
 import me.dvyy.shocky.page.Pages
@@ -17,10 +18,14 @@ fun Page.blogIndex() = defaultTemplate {
             h2 { +year }
             ul {
                 posts.sortedByDescending { it.date }.forEach { post ->
-                    li {
-                        div("flex space-x-2 items-center text-zinc-400") {
+                    li("pb-2") {
+                        div("flex flex-col text-zinc-400") {
                             a(href = post.url) { +post.title }
-                            span { i { +(post.desc ?: "") } }
+                            postInformation(post)
+//                            span { i { +(post.desc ?: "") } }
+//                            div("flex") {
+//                                post.tags.forEach { outlinedChip(it) }
+//                            }
                         }
                     }
                 }

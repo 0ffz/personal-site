@@ -17,7 +17,3 @@ sourceSets.main {
     kotlin.srcDirs("src")
     resources.srcDirs("site")
 }
-
-kotlin {
-    jvmToolchain(17)
-}

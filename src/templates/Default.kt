@@ -39,8 +39,10 @@ inline fun Page.defaultTemplate(
                 wrapper
                 prose-p:my-3 prose-ul:my-3
                 prose-li:my-1
-                prose-h2:mb-1 prose-h3:mb-1 prose-h4:mb-1
-                prose-h2:mt-8 prose-h3:mt-6 prose-h4:mt-6
+                prose-h1:mb-2 prose-h2:mb-1 prose-h3:mb-1 prose-h4:mb-1
+                prose-h1:mt-10 prose-h2:mt-8 prose-h3:mt-6 prose-h4:mt-6
+                !prose-pre:overflow-hidden
+                !prose-code:overflow-hidden
             """.trimIndent()
         ) {
             smallWrap(meta.smallPage) {
