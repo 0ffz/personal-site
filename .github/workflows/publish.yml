@@ -29,29 +29,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 17
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-
-      - run: npm ci
-
-      - name: Grant execute permission for gradlew
-        shell: bash
-        run: chmod +x gradlew
-
       - name: Build
-        run: ./gradlew generate
+        run: chmod +x amper && ./amper run generate
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
