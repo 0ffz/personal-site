@@ -29,6 +29,12 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Setup Amper cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Amper
+          key: "${{ runner.os }}-${{ hashFiles('amper') }}"
+
       - name: Build
         run: chmod +x amper && ./amper run generate
 

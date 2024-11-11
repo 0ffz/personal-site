@@ -3,7 +3,7 @@ repositories:
   - url: "https://repo.mineinabyss.com/releases"
     id: "mineinabyss"
 dependencies:
-  - "me.dvyy:shocky:0.0.2"
+  - "me.dvyy:shocky:0.0.3"
 #  - ./shocky
 settings:
   kotlin:
