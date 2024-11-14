@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: auto;
+    src: url(fonts/JetBrainsMono-Regular.woff2) format('woff2');
+}
+
 .image-small {
     max-width: 400px;
     display: block;
@@ -22,7 +30,7 @@
 .wrapper {
     display: grid;
     grid-template-columns: 1fr min(104ch, calc(100% - 48px)) 1fr;
-    grid-column-gap: 24px;
+    /*grid-column-gap: 24px;*/
     grid-row-gap: 0;
 }
 .wrapper > * {

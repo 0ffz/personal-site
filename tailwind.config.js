@@ -6,10 +6,10 @@ module.exports = {
             './site/**/*.md',
         ]
     },
-    fontFamily: {
-        'mono': ['"JetBrains Mono"', 'monospace'],
-    },
     theme: {
+        fontFamily: {
+            'mono': ['JetBrains Mono', 'monospace'],
+        },
         extend: {},
     },
     plugins: [

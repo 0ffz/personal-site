@@ -9,11 +9,11 @@ tags: [ draft, minecraft, ecs, particles ]
 
 [View the source code on GitHub](https://github.com/MineInAbyss/particles/)
 
-Geary is an entity component system I wrote, with a companion [PaperMC plugin](https://github.com/MineInAbyss/Geary-papermc) that lets us run it on a modified Minecraft server. This page explores how we can use Geary to create a fairly extendable particle system with little overhead, I'll use actual code used by the plugin but won't go too in-depth about the syntax used, you can read the [Geary quickstart guide](https://docs.mineinabyss.com/geary/quickstart/) if you want a better idea of it.
+Geary is an entity component system I wrote, with a companion [PaperMC plugin](https://github.com/MineInAbyss/Geary-papermc) that lets us run it on a modified Minecraft server. This page explores how we can use Geary to create an extendable particle system with little overhead. We'll explore code samples from the plugin available on GitHub, but won't focus on syntax. You can read the [Geary quickstart guide](https://docs.mineinabyss.com/geary/quickstart/) if you want to get a better idea of it.
 
 In the showcase below, we get to around 10k particles using block entity packets before client fps starts to tank, with a lot more headroom on the server end (see the end of this post):
 
-[<img alt="img_2.png" src="img_2.png" width="520"/>](https://www.youtube.com/watch?v=QzaAQEHklFI)
+[<img src="thumbnail.png" width="520"/>](https://www.youtube.com/watch?v=QzaAQEHklFI)
 
 <figcaption>
 Block entities are great replacements for regular Minecraft particles because we can apply fancy transformations, custom (potentially animated) models, these can even be flat planes that are essentially just traditional particles, but with proper interpolation on the client.
@@ -44,6 +44,7 @@ gearyPaper.configure {
 ```
 
 ## Setting up our data
+
 We create some components for position data:
 
 ```kotlin
@@ -222,16 +223,20 @@ The majority of the TPS increase you see in the showcase comes from Minecraft's 
 packets. Geary adds almost no overhead for all the following code: storing all the particles, displaying them as block
 entities using packets, following nearby players, running distance checks to remove entities near the player.
 
-At ~30k particles, my machine with fairly modern AM4 hardware, running many clientside optimization mods starts to
-struggle, but the server has headroom for more, which means with some network stack optimizations this could easily
-handle thousands of particles for many players. _(Perhaps a project for another day?)_
+At ~20k particles, my machine with fairly modern AM4 hardware, running many clientside optimization mods struggles seriously, but the server has headroom for more, which means with some network stack optimizations this could easily
+handle thousands of particles for many players. *(Perhaps a project for another day?)*
 
-Below is a flamegraph from a similar situation near the end of the showcase video where 10k particles were spawned in several
-times, in yellow you can see all code related to this project, the rest comes primarily from Minecraft encoding packets,
-shown after.
+Below is a flamegraph from a similar situation near the end of the showcase video where 10k particles were spawned several
+times, 
 
-![img.png](img.png)
-![img_1.png](img_1.png)
+![img.png](profiler-full.png)
+
+<figcaption>In yellow you can see all code related to this project.</figcaption>
+
+
+![img_1.png](profiler-zoom.png)
+
+<figcaption>A slightly zoomed in view of the gray part, we see Netty and Minecraft's packet encoding code taking up most of the tick.</figcaption>
 
 ## Future work
 
