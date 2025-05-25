@@ -27,7 +27,10 @@ inline fun Page.defaultTemplate(
             link(rel = LinkRel.stylesheet, href = "/assets/scripts/prism.css")
             link(rel = LinkRel.stylesheet, href = "/assets/scripts/theme-darcula.css")
         }
-        title(page.title)
+        title(when(val title = page.title) {
+            "Projects", "Blog" -> "Danielle's $title"
+            else -> title
+        })
     }
     body(classes = "bg-zinc-900 min-h-screen overflow-x-hidden") {
         div(

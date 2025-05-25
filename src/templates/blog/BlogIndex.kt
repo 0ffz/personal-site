@@ -1,6 +1,5 @@
 package templates.blog
 
-import components.outlinedChip
 import kotlinx.html.*
 import me.dvyy.shocky.page.Page
 import me.dvyy.shocky.page.Pages

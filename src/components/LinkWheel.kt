@@ -3,9 +3,10 @@ package components
 import kotlinx.html.FlowContent
 import kotlinx.html.a
 import kotlinx.html.div
+import kotlinx.html.nav
 
 
-fun FlowContent.linkWheel(pageName: String) = div("flex overflow-x-auto space-x-4 items-center") {
+fun FlowContent.linkWheel(pageName: String) = nav("flex overflow-x-auto space-x-4 items-center") {
     mapOf(
         "Home" to "/",
         "Projects" to "/projects",

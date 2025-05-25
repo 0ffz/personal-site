@@ -10,6 +10,9 @@ import kotlinx.serialization.Serializable
 import me.dvyy.shocky.markdown
 import me.dvyy.shocky.page.Page
 import templates.defaultTemplate
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 @Serializable
 data class BlogPost(
@@ -29,7 +32,7 @@ fun FlowContent.postInformation(page: Page) {
                 secondaryText(it)
             }
         }
-        div("my-2 flex overflow-x-auto space-x-1 items-center content-start scrollbar-hide") {
+        chipList {
             page.formattedDate?.let {
                 icons.calendar
                 secondaryText(it)
@@ -40,5 +43,11 @@ fun FlowContent.postInformation(page: Page) {
                 for (tag in page.tags) outlinedChip(tag)
             }
         }
+    }
+}
+
+fun FlowContent.chipList(content: DIV.() -> Unit) {
+    div("my-1 flex overflow-x-auto space-x-1 items-center content-start scrollbar-hide") {
+        content()
     }
 }
