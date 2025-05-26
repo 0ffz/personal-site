@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@plugin "@tailwindcss/typography";
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: auto;
+    src: url(/assets/fonts/JetBrainsMono-Regular.woff2) format('woff2');
+}
+
+@theme {
+    --font-mono: "JetBrains Mono", monospace;
+}
+
+@utility full-bleed {
+    width: 100%;
+    grid-column: 1 / 4 !important;
+}
+
+@utility wrapper {
+    display: grid;
+    grid-template-columns: 1fr min(1080px, calc(100% - 40px)) 1fr;
+    /*grid-column-gap: 24px;*/
+    grid-row-gap: 0;
+    * {
+        grid-column: 2;
+    }
+}
+
+@utility break-word {
+    word-break: break-word;
+}
+.image-small {
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-medium {
+    max-width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-large {
+    max-width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+:root {
+    color-scheme: dark;
+}

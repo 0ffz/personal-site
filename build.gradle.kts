@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation("me.dvyy:shocky:0.1.1")
+    implementation("me.dvyy:shocky:0.2.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
 }
 

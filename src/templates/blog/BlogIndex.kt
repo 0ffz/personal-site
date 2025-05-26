@@ -20,7 +20,7 @@ fun Page.blogIndex() = defaultTemplate {
                     li("pb-2") {
                         div("flex flex-col text-zinc-400") {
                             a(href = post.url) { +post.title }
-                            postInformation(post)
+                            postInformation(bleed = false, post)
 //                            span { i { +(post.desc ?: "") } }
 //                            div("flex") {
 //                                post.tags.forEach { outlinedChip(it) }

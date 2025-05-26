@@ -4,7 +4,7 @@ desc: A showcase of how Geary ECS can be used to make an efficient particle syst
 date: 2024-11-13
 year: 2024
 template: blog
-tags: [ draft, minecraft, ecs, particles ]
+tags: [ minecraft, ecs, particles ]
 ---
 
 [View the source code on GitHub](https://github.com/MineInAbyss/particles/)
@@ -232,7 +232,6 @@ times,
 ![img.png](profiler-full.png)
 
 <figcaption>In yellow you can see all code related to this project.</figcaption>
-
 
 ![img_1.png](profiler-zoom.png)
 

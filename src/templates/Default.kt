@@ -21,7 +21,7 @@ inline fun Page.defaultTemplate(
         meta(charset = "utf-8")
         meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
         link(rel = LinkRel.stylesheet, href = "/assets/tailwind/styles.css")
-        link(rel = LinkRel.stylesheet, href = "/assets/custom.css")
+//        link(rel = LinkRel.stylesheet, href = "/assets/custom.css")
         if(syntaxHighlighting) {
             script(src = "/assets/scripts/prism.js") {}
             link(rel = LinkRel.stylesheet, href = "/assets/scripts/prism.css")
@@ -36,18 +36,22 @@ inline fun Page.defaultTemplate(
         div(
             """
                 prose prose-zinc dark:prose-invert max-w-none
-                prose-a:text-purple-300 prose-a:no-underline hover:prose-a:text-purple-200
+                prose-a:text-purple-300 prose-a:no-underline prose-a:hover:text-purple-200
                 prose-img:mx-auto prose-img:my-3
                 h-auto pt-4 md:pt-8 lg:pt-20 xl:pt-36
                 prose-figcaption:mx-auto prose-figcaption:italic prose-figcaption:mt-0 prose-figcaption:mb-2 prose-figcaption:px-4
                 wrapper
+                max-md:prose-img:full-bleed
                 prose-p:mt-3 prose-p:mb-1 prose-ul:my-3
                 prose-li:my-1
                 prose-h1:mb-2 prose-h2:mb-1 prose-h3:mb-1 prose-h4:mb-1
                 prose-h1:mt-10 prose-h2:mt-8 prose-h3:mt-6 prose-h4:mt-6
                 !prose-pre:overflow-hidden
                 !prose-code:overflow-hidden
-            """.trimIndent()
+                prose-code:!font-mono prose-code:!break-word
+                prose-code:before:content-none prose-code:after:content-none
+                prose-pre:rounded-none prose-pre:full-bleed prose-pre:wrapper prose-pre:!px-0
+                """.trimIndent()
         ) {
             smallWrap(meta.smallPage) {
                 h1("mb-2") { +page.title }

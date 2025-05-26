@@ -22,7 +22,7 @@ fun Page.projectsPage() = defaultTemplate {
         """.trimIndent()
 
         captionedImage(
-            "min-h-60 md:min-h-80 object-cover",
+            "min-h-60 md:min-h-80 object-cover filter-grayscale hover:filter-none",
             src = "assets/images/particles.webp",
             caption = "A 3D scene with two particle types, plotting the size distribution of clusters in the sidebar."
         )
@@ -103,13 +103,12 @@ fun FlowContent.project(
     heading: String,
     source: String? = null,
     languages: String = "",
-    @Language("markdown")
     content: FlowContent.() -> Unit,
 ) {
     markdown("## $heading")
-    chipList {
-        if (source != null) outlinedChip("Source", url = source)
-        div("pl-2") { icons.tags }
+    chipList(bleed = true) {
+        if (source != null) div("pr-1") { outlinedChip("Source", url = source) }
+        icons.tags
         tags.split(" ").forEach { outlinedChip(it) }
         languages.split(" ").forEach { languageIcon(it) }
     }
