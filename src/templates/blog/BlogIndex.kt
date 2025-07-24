@@ -18,7 +18,7 @@ fun Page.blogIndex() = defaultTemplate {
             ul {
                 posts.sortedByDescending { it.date }.forEach { post ->
                     li("pb-2") {
-                        div("flex flex-col text-zinc-400") {
+                        div("flex flex-col dark:text-zinc-400") {
                             a(href = post.url) { +post.title }
                             postInformation(bleed = false, post)
 //                            span { i { +(post.desc ?: "") } }

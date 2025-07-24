@@ -14,6 +14,6 @@ fun FlowContent.linkWheel(pageName: String) = nav("flex overflow-x-auto space-x-
         "GitHub" to "https://github.com/0ffz",
         "Contact" to "mailto:contact@dvyy.me"
     ).forEach { (name, link) ->
-        a(href = link, classes = if (name == pageName) "!text-purple-50" else "") { +name }
+        a(href = link, classes = if (name == pageName) "!text-purple-900 dark:!text-purple-50" else "") { +name }
     }
 }

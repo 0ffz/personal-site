@@ -32,11 +32,13 @@ inline fun Page.defaultTemplate(
             else -> title
         })
     }
-    body(classes = "bg-zinc-900 min-h-screen overflow-x-hidden") {
+    body(classes = "bg-zinc-100 dark:bg-zinc-900 min-h-screen overflow-x-hidden") {
         div(
             """
                 prose prose-zinc dark:prose-invert max-w-none
-                prose-a:text-purple-300 prose-a:no-underline prose-a:hover:text-purple-200
+                prose-a:text-purple-500 prose-a:hover:text-purple-400
+                dark:prose-a:text-purple-300 dark:prose-a:hover:text-purple-200
+                prose-a:no-underline
                 prose-img:mx-auto prose-img:my-3
                 h-auto pt-4 md:pt-8 lg:pt-20 xl:pt-36
                 prose-figcaption:mx-auto prose-figcaption:italic prose-figcaption:mt-0 prose-figcaption:mb-2 prose-figcaption:px-4
