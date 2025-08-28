@@ -21,7 +21,7 @@ inline fun Page.defaultTemplate(
         meta(charset = "utf-8")
         meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
         link(rel = LinkRel.stylesheet, href = "/assets/tailwind/styles.css")
-//        link(rel = LinkRel.stylesheet, href = "/assets/custom.css")
+        link(rel = "icon", type = "image/png",href = "/assets/images/favicon.png")
         if(syntaxHighlighting) {
             script(src = "/assets/scripts/prism.js") {}
             link(rel = LinkRel.stylesheet, href = "/assets/scripts/prism.css")
